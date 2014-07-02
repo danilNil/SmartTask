@@ -39,3 +39,7 @@ exports.onLogin = function (callback) {
   		callback(err);
 	});
 }
+
+exports.userLogged = function(){
+	return oauth2Client.credentials;
+}
