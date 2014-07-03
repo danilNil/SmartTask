@@ -8,8 +8,9 @@ router.get('/', function(req, res) {
 	            message: err.message,
 	            error: err
         	});
-		else
+		else{
 			res.render('tasks', {tasks : tasks});	
+		}
 	});
 });
 

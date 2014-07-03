@@ -3,3 +3,11 @@ extends layout
 block content
   h1= title
   p Your tasks
+  p 
+    = tasks.length
+  div.container
+    div.content   
+      - each task in tasks
+        li= task.title
+  div.footer
+    

@@ -10,6 +10,7 @@ exports.fetchTasks= function(callback){
 	        console.log('An error occured', err);
 	      }
 	      console.log(lists);
+	      callback(lists.items, err);
     	});
   	});
 }
