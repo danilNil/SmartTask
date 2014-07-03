@@ -43,3 +43,8 @@ exports.onLogin = function (callback) {
 exports.userLogged = function(){
 	return oauth2Client.credentials;
 }
+
+exports.oauth2Client = function(){
+	return oauth2Client;
+}
+
