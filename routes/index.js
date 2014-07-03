@@ -9,6 +9,7 @@ router.get('/', function(req, res) {
     res.redirect("/google_login");
   }
   else {
+    console.log("redirect(/google_task);");
     res.redirect("/google_task");
   }
 });
@@ -17,10 +18,13 @@ router.get('/oauth2callback', function(req, res) {
   	//console.log(res);
   	var parsedUrl = url.parse(req.url, true);
   	auth.getToken(parsedUrl, function (err) {
-      var statusString = "OK";
       if(err)
-        statusString = err.stack;
-	  	res.render('auth', {status : statusString});
+	  	  res.render('error', {
+            message: err.message,
+            error: err
+        });
+      else
+        res.redirect("/google_task");
   	});
 });
 
