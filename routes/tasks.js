@@ -20,33 +20,21 @@ function saveLists (tasks) {
 	var conString = "postgres://postgres:123@localhost/smart_tasks";
 	var client = new pg.Client(conString);
 	
-	client.connect(function(err) {
-	  if(err) {
-	    return console.error('could not connect to postgres', err);
-	  }else{
-	  	debugger;
-	  	client.query("CREATE TABLE IF NOT EXISTS tasks");
-	  	for (var i = tasks.length - 1; i >= 0; i--) {
-			client.query({
-		  		name: 'insert tasks',
-		  		text: "INSERT INTO tasks(title) values($1)",
-		  		values: [tasks[i].title]
-			});
-		};
-		var query = client.query("SELECT * FROM tasks");
+	client.connect();
+  	client.query("CREATE TABLE IF NOT EXISTS tasks (id text PRIMARY KEY, title text)");
+  	for (var i = tasks.length - 1; i >= 0; i--) {
+  		console.log(tasks[i].title);
+		client.query("INSERT INTO tasks (id, title) VALUES($1, $2)", [tasks[i].id, tasks[i].title]);
+	};
+	// var query = client.query("SELECT * FROM tasks");
 
-		query.on('row', function(row) {
-		  console.log(row);
-		});
+	// query.on('row', function(row) {
+	//   console.log(row);
+	// });
 
-		query.on('end', function() { 
-		  client.end();
-		});
-	  }
-	});
-
-	
-	
+	// query.on('end', function() { 
+	//   client.end();
+	// });
 }
 
 
