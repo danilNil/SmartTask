@@ -21,7 +21,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.get('/google_task', controllers.tasks.middleware(app), controllers.tasks.get);
+
+var tasks = controllers.tasks;
+app.get('/google_task', tasks.middleware(app), tasks.get);
 
 
 /// catch 404 and forward to error handler
