@@ -12,8 +12,6 @@ module.exports.fetchTasks= function(req, res, next){
   	        console.log('An error occured', err);
             next(err);
   	      }
-          console.log("!!lists.length");
-  	      console.log(lists.length);
           req.tasks = lists.items;
           next();
       	});

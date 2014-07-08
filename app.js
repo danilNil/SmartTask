@@ -23,8 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 
 var tasks = controllers.tasks;
-app.get('/google_task', tasks.fetchTasks, tasks.saveLists, tasks.get);
-
+app.get('/google_task', tasks.fetchTasks, tasks.saveLists, tasks.getLists, tasks.get);
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {
