@@ -9,9 +9,12 @@ router.get('/', function(req, res) {
     res.redirect("/google_login");
   }
   else {
-    console.log("redirect(/google_task);");
-    res.redirect("/google_task");
+    res.redirect("/tasks");
   }
+});
+
+router.get('/google_task', function(req, res) {
+    res.redirect("/tasks");
 });
 
 router.get('/oauth2callback', function(req, res) {
@@ -24,7 +27,7 @@ router.get('/oauth2callback', function(req, res) {
             error: err
         });
       else
-        res.redirect("/google_task");
+        res.redirect("/tasks");
   	});
 });
 
