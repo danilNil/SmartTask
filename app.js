@@ -22,6 +22,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 
+app.use(require('less-middleware')(path.join(__dirname, 'public')));
+
+
 var tasks = controllers.tasks;
 app.get('/tasks', tasks.fetchTasks, tasks.saveLists, tasks.getLists, tasks.get);
 
